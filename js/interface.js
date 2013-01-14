@@ -61,10 +61,58 @@ $(document).ready(function(){
     gameData.load();
     $('.back-to-game').button('disable');
     $.mobile.changePage('#new-game',{changeHash: false});
+
+    window.gameInfo = (function(){
+        var blinking = false,
+            text = "",
+            color = "";
+
+        var self = {};
+
+        self.getBlinking = function(){
+            return blinking;
+        };
+
+        var mainObj = $("#game-info");
+        self.setBlinking = function(val){
+            if(val !== blinking){
+                blinking = val;
+                if(val){
+                    mainObj.addClass("blinking");
+                }else{
+                    mainObj.removeClass("blinking");
+                }
+            }
+        };
+
+        self.getText = function(){
+            return text;
+        };
+
+        var textObj = $("#game-info>.cont");
+        self.setText = function(val){
+            text = val;
+            textObj.html(val);
+        };
+
+        self.getColor = function(){
+            return color;
+        };
+
+        var colorObj = $("#game-info>.go");
+        self.setColor = function(color){
+            colorObj.removeClass("white").removeClass("black");
+            if(color){
+                colorObj.addClass(color);
+            }
+        };
+
+        return self;
+    })();
 });
 
 function showWinDialog(game){
-    gameInfo.blinking=false;
+    gameInfo.setBlinking(false);
     console.log(game);
     if(game.mode === 'hvh'){
         var who=(function(string){ return string.charAt(0).toUpperCase() + string.slice(1);})(game.getCurrentPlayer().color);
@@ -84,38 +132,6 @@ function showWinDialog(game){
             gameInfo.value='Computer won.'
             $('#happy-outer').fadeIn(500);
         }
-    }
-}
-
-gameInfo={
-    get blink(){
-        return $('#game-info').hasClass('blinking');
-    },
-    set blinking(val){
-        if(val){
-            $('#game-info').addClass('blinking');
-        }else{
-            $('#game-info').removeClass('blinking');
-        }
-    },
-    get value(){
-        return $('#game-info>.cont').html();
-    },
-    set value(val){
-        $('#game-info>.cont').html(val);
-    },
-    get color(){
-        if($('#game-info>.go').hasClass('black')){
-            return 'black';
-        }else if($('#game-info>.go').hasClass('white')){
-            return 'white';
-        }else{
-            return 'none';
-        }
-    },
-    set color(val){
-        $('#game-info>.go').removeClass('white').removeClass('black');
-        if(val) $('#game-info>.go').addClass(val);
     }
 }
 

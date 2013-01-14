@@ -5,11 +5,11 @@ function Player(color){
 
 Player.prototype.myTurn = function(){
     this.game.setCurrentColor(this.color);
-    gameInfo.value=(function(string){
+    gameInfo.setText((function(string){
         return string.charAt(0).toUpperCase() + string.slice(1);
-    })(this.color)+"'s turn.";
-    gameInfo.color = this.color;
-    gameInfo.blinking = false;
+    })(this.color)+"'s turn.");
+    gameInfo.setColor(this.color);
+    gameInfo.setBlinking(false);
 };
 
 Player.prototype.watch = function(){};
@@ -28,7 +28,7 @@ HumanPlayer.prototype.myTurn = function(){
     Player.prototype.myTurn.call(this);
     this.game.toHuman(this.color);
     if(this.other instanceof AIPlayer){
-        gameInfo.value='Your turn';
+        gameInfo.setText('Your turn');
     }
 };
 
@@ -74,8 +74,8 @@ AIPlayer.prototype = new Player();
 AIPlayer.prototype.myTurn = function(){
     Player.prototype.myTurn.call(this);
     this.game.toOthers();
-    gameInfo.value="Thinking...";
-    gameInfo.blinking=true;
+    gameInfo.setText("Thinking...");
+    gameInfo.setBlinking(true);
     this.move();
 };
 
