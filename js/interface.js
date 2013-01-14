@@ -1,12 +1,10 @@
 $(document).ready(function(){
+    var game = new Game($(".go-board"));
     $(window).resize(adjustSize);
+
     adjustSize();
     $.mobile.defaultDialogTransition = 'flip';
     $.mobile.defaultPageTransition = 'flip';
-    
-    $(".go-place").on('tap', function(event){
-        game.board.setOnEl($(this));
-    });
     
     $('#mode-select input[type="radio"]').on('change', function(){
         gameData.mode=$(this).val();
@@ -31,26 +29,24 @@ $(document).ready(function(){
         }catch(e){}
         if(gameData.mode==='vshuman'){
             game.mode='hvh';
-            game.black=new goHuman('black');
-            game.white=new goHuman('white');
+            game.init(new HumanPlayer("black"), new HumanPlayer("white"));
         }else{
+            var color, other;
             if(gameData.color==='black'){
-                var color='black';
-                var other='white';
+                color='black';
+                other='white';
             }else{
-                var color='white';
-                var other='black';
+                color='white';
+                other='black';
             }
             game.mode=gameData.level;
-            game[color]=new goHuman(color);
-            game[other]=new goAi(game.mode,other);
+            game.init(new HumanPlayer(color), new AIPlayer(game.mode, other));
         }
         $.mobile.changePage('#game-page');
-        game.initialize();
-        game.playing=true;
-        game.black.myTurn();
+        game.start();
         setTimeout(function(){$('.back-to-game').button('enable');},100);
     });
+
     $("#undo-button").on('tap', function(){
         game.undo();
     });
@@ -67,16 +63,17 @@ $(document).ready(function(){
     $.mobile.changePage('#new-game',{changeHash: false});
 });
 
-function showWinDialog(){
+function showWinDialog(game){
     gameInfo.blinking=false;
-    if(game.mode=='hvh'){
-        var who=(function(string){ return string.charAt(0).toUpperCase() + string.slice(1);})(game.currentColor);
+    console.log(game);
+    if(game.mode === 'hvh'){
+        var who=(function(string){ return string.charAt(0).toUpperCase() + string.slice(1);})(game.getCurrentPlayer().color);
         $("#game-won h4").html(who+' Won!');
         gameInfo.value=who+' won.'
         $("#win-content").html(who+' won the game. Play again?');
         $('#happy-outer').fadeIn(500);
     }else{
-        if(game[game.currentColor] instanceof goHuman){
+        if(game.getCurrentPlayer() instanceof HumanPlayer){
             $("#game-won h4").html('You Won!');
             $("#win-content").html('You won the game. Play again?');
             gameInfo.value='You won.'

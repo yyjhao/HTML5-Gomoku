@@ -18,11 +18,15 @@
 	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
 	<link rel="stylesheet" href="style/w.min.css" />
 
-	<script src='js/lib.js' type='text/javascript'></script>
+	<!-- Project Scripts -->
+	<script src='js/Player.js' type='text/javascript'></script>
+	<script src='js/Board.js' type='text/javascript'></script>
+	<script src='js/Game.js' type='text/javascript'></script>
 	<script src='js/layout.js' type='text/javascript'></script>
 	<script src='js/interface.js' type='text/javascript'></script>
 	<script src='js/storage.js' type='text/javascript'></script>
-	
+	<!-- End of Project Scripts -->
+
 	<link rel='stylesheet' href='style/style.css' type='text/css'/>
 	<script src='js/plugins/prefixfree.min.js' type='text/javascript'></script>
 </head>
@@ -49,20 +53,7 @@
 				<a href='#help-page' id='help-button' data-icon="star" data-role='button'>About</a>
 			</div>
 			<div class='go-board' data-enhance=false>
-				<script type='text/javascript'>
-					for(var i=0;i<15;i++){
-						for(var j=0;j<15;j++){
-							document.write('<div id="go-'+j+'-'+i+'" class="go-place""><div class="go"></div></div>');
-							$('#go-'+j+'-'+i).css({
-								'top': i/15*100+'%',
-								'left': j/15*100+'%',
-								'right': 100-(j+1)/15*100+'%',
-								'bottom': 100-(i+1)/15*100+'%',
-								'position': 'absolute'
-							});
-						}
-					}
-				</script>
+				
 			</div>
 			<table class='board' data-enhance=false>
 				<tbody>

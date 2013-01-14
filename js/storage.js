@@ -3,11 +3,12 @@ gameData={
     records: {},
     addRecord: function(name, defaultVal,applyFunc){
         this.records[name]=defaultVal;
+        var func;
         if(!applyFunc){
-            var func=function(){};
+            func=function(){};
         }
         else{
-            var func=applyFunc;
+            func=applyFunc;
         }
         this.__defineGetter__(name, function(){
             return localStorage[this.prefix+name];
@@ -28,7 +29,7 @@ gameData={
             this[i]=this[i];
         }
     }
-}
+};
 
 gameData.addRecord('firstTime','firstTime');
 
@@ -53,4 +54,4 @@ gameData.load=function(){
         this.ini();
     }
     this.apply();
-}
+};

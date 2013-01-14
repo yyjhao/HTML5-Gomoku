@@ -166,11 +166,7 @@ table.board{
 	color:transparent;
 }
 
-#go-7-7::before,
-#go-3-3::before,
-#go-3-11::before,
-#go-11-3::before,
-#go-11-11::before{
+.go-darkdot::before{
 	content:' ';
 	background:black;
 	display:block;
