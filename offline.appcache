@@ -1,0 +1,27 @@
+CACHE MANIFEST
+# 2012-06-1:v1
+
+CACHE:
+/
+/favicon.ico
+/style/small-wood.jpg
+/style/style.css
+/style/w.min.css
+/style/wood.jpg
+/style/woodfloor.jpg
+/style/images/ajax-loader.png
+/style/icons-18-black.png
+/style/icons-18-white.png
+/style/icons-36-black/png
+/style/icons-36-white.png
+/js/ai-worker.js
+/js/game.js
+/js/prefixfree.min.js
+/images/happy.png
+/images/icon.png
+/images/sad.png
+/images/splash_iPad_landscape.png
+/images/splash_iPad_portrait.png
+http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css
+http://code.jquery.com/jquery-1.7.2.min.js
+http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js
