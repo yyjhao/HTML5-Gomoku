@@ -12,12 +12,31 @@ function Place(r, c, board){
     inner.className = "go";
     elm.appendChild(inner);
 
+    if("ontouchstart" in window){
+        var moved = false;
+        elm.ontouchstart = function(e){
+            moved = false;
+            return false;
+        };
+
+        elm.ontouchmove = function(e){
+            moved = true;
+            return false;
+        };
+
+        elm.ontouchend = function(e){
+            if(!moved){
+                board.clicked(r, c);
+            }
+            moved = false;
+            return false;
+        };
+    }else{
+        elm.onclick = function(){
+            board.clicked(r, c);
+        };
+    }
     elm = $(elm);
-
-    elm.click(function(){
-        board.clicked(r, c);
-    });
-
     this.elm = elm;
     this.isSet = false;
 }
