@@ -44,7 +44,18 @@ Place.prototype.unwarns = function(){
     this.elm.removeClass("warning");
 };
 
-var Board = function(boardElm){
+var Board = function(boardElm, backgroundElm){
+    var frag = document.createDocumentFragment();
+    for(var i = 0; i < 14; i++){
+        var row = document.createElement("tr");
+        for(var j = 0; j < 14; j++){
+            row.appendChild(document.createElement("td"));
+        }
+        frag.appendChild(row);
+    }
+    backgroundElm.append(frag);
+
+
     var self = this;
     var clickable = true,
         places = [],

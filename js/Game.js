@@ -1,11 +1,11 @@
-function Game(boardElm){
+function Game(boardElm, boardBackgroundElm){
     this.mode = "hvh";
     this.rounds = 0;
     var white, black,
         playing = false,
         history = [],
         players = {},
-        board = new Board(boardElm),
+        board = new Board(boardElm, boardBackgroundElm),
         currentColor = "black";
 
     board.clicked = function(r, c){

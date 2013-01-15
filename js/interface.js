@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var game = new Game($(".go-board"));
+    var game = new Game($(".go-board"), $(".board tbody"));
 
     var adjustSize = adjustSizeGen();
 
