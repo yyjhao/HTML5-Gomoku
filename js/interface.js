@@ -1,5 +1,8 @@
 $(document).ready(function(){
     var game = new Game($(".go-board"));
+
+    var adjustSize = adjustSizeGen();
+
     $(window).resize(adjustSize);
 
     adjustSize();
@@ -113,7 +116,6 @@ $(document).ready(function(){
 
 function showWinDialog(game){
     gameInfo.setBlinking(false);
-    console.log(game);
     if(game.mode === 'hvh'){
         var who=(function(string){ return string.charAt(0).toUpperCase() + string.slice(1);})(game.getCurrentPlayer().color);
         $("#game-won h4").html(who+' Won!');

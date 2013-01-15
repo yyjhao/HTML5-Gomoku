@@ -10,13 +10,14 @@ gameData={
         else{
             func=applyFunc;
         }
-        this.__defineGetter__(name, function(){
-            return localStorage[this.prefix+name];
-        });
-        
-        this.__defineSetter__(name, function(val){
-            func(val);
-            localStorage[this.prefix+name] = val;
+        Object.defineProperty(this, name, {
+            get: function(){
+                return localStorage[this.prefix+name];
+            },
+            set: function(val){
+                func(val);
+                localStorage[this.prefix+name] = val;
+            }
         });
     },
     ini: function(){
