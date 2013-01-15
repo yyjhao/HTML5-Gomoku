@@ -1,12 +1,8 @@
 @keyframes "blink" {
  from {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
-   	filter: alpha(opacity=5);
    	opacity: 0.05;
  }
  to {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
-   	filter: alpha(opacity=95);
    	opacity: 0.95;
  }
 
@@ -14,11 +10,9 @@
 
 @-moz-keyframes blink {
  from {
-   filter: alpha(opacity=5);
    opacity: 0.05;
  }
  to {
-   filter: alpha(opacity=95);
    opacity: 0.95;
  }
 
@@ -26,11 +20,9 @@
 
 @-webkit-keyframes "blink" {
  from {
-   filter: alpha(opacity=5);
    opacity: 0.05;
  }
  to {
-   filter: alpha(opacity=95);
    opacity: 0.95;
  }
 
@@ -38,13 +30,9 @@
 
 @-ms-keyframes "blink" {
  from {
-   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
-   filter: alpha(opacity=5);
    opacity: 0.05;
  }
  to {
-   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
-   filter: alpha(opacity=95);
    opacity: 0.95;
  }
 
@@ -52,11 +40,9 @@
 
 @-o-keyframes "blink" {
  from {
-   filter: alpha(opacity=5);
    opacity: 0.05;
  }
  to {
-   filter: alpha(opacity=95);
    opacity: 0.95;
  }
 
@@ -65,12 +51,10 @@
 @keyframes "hovering" {
  from {
     top: -10px;
-   	-webkit-box-shadow: 0 10px 10px rgba(0,0,0,0.7);
    	box-shadow: 0 10px 10px rgba(0,0,0,0.7);
  }
  to {
     top: 0;
-   	-webkit-box-shadow: none;
    	box-shadow: none;
  }
 
@@ -91,12 +75,10 @@
 @-webkit-keyframes "hovering" {
  from {
    top: -10px;
-   -webkit-box-shadow: 0 10px 10px rgba(0,0,0,0.7);
    box-shadow: 0 10px 10px rgba(0,0,0,0.7);
  }
  to {
    top: 0;
-   -webkit-box-shadow: none;
    box-shadow: none;
  }
 
@@ -220,11 +202,8 @@ header.game-ult {
 	border: 2px solid black;
 	border-radius: 5px;
 
-	-webkit-box-shadow: 0 0 10px black;
 	box-shadow: 0 0 10px black;
 	text-align: center;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-	filter: alpha(opacity=80);
 	opacity: 0.8;
 
 	-webkit-animation: thinking-glow 1s;
@@ -330,7 +309,6 @@ table.board {
 }
 
 .go-board .go-place.last-move>.go {
-	-webkit-box-shadow: inset 0 -2px 15px rgba(255,255,255,0.3), inset -2px -1px 40px rgba(10,10,10,0.4), 0 0 2px rgba(0,0,0,0.5), 0 0 10px 3px white !important;
 	box-shadow: inset 0 -2px 15px rgba(255,255,255,0.3), inset -2px -1px 40px rgba(10,10,10,0.4), 0 0 2px rgba(0,0,0,0.5), 0 0 10px 3px white !important;
 }
 
@@ -421,10 +399,7 @@ table.board {
 .go-board.playing .go-place:not(.set):hover>.go {
 	top: -10px;
 
-	-webkit-box-shadow: inset 0 -2px 15px rgba(255,255,255,0.3), inset -2px -1px 40px rgba(0,0,0,0.4), 0 10px 10px rgba(0,0,0,0.7) !important;
 	box-shadow: inset 0 -2px 15px rgba(255,255,255,0.3), inset -2px -1px 40px rgba(0,0,0,0.4), 0 10px 10px rgba(0,0,0,0.7) !important;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-	filter: alpha(opacity=70);
 	opacity: 0.7;
 
 	-webkit-animation: none !important;
