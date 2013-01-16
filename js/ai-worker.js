@@ -40,9 +40,11 @@ for (var i=0;i<15;i++){
     }
     ai.map.push(tmp);
 }
-ai.boardarray=[];
-for(var i=0;i<225;i++){
-    ai.boardarray.push('');
+
+boardBuf = new ArrayBuffer(255);
+boardBufArr = new Uint8Array(boardBuf);
+function bufToString(){
+    return String.fromCharCode.apply(null, boardBufArr);
 }
 
 ai.ini=function(mode,color){
@@ -115,7 +117,7 @@ ai._updateMap=function(r,c,num,remove){
         scores=this.scores,
         i=4,x,y,step,tmp,xx,yy,cur,changes=0,s,e;
     if(!remove){
-        this.boardarray[r*15+c]=num+'';
+        boardBufArr[r * 15 + c] = num << 1;
         this.map[r][c].set=num+1;
         while(i--){
             x=r;
@@ -165,7 +167,7 @@ ai._updateMap=function(r,c,num,remove){
             }
         }
     }else{
-        this.boardarray[r*15+c]='';
+        boardBufArr[r * 15 + c] = 0;
         this.map[r][c].set=false;
         while(i--){
             x=r;
@@ -260,8 +262,9 @@ ai.cache={};
 ai.nega=function(x,y,depth,alpha,beta){
     var pt=this.map[x][y].info, i=4, num=depth%2;
     this.simulate(x,y,num);
-    if(this.cache[this.boardarray+' '+depth]){
-        return this.cache[this.boardarray];
+    var bufstr = bufToString();
+    if(this.cache[bufstr]){
+        return this.cache[bufstr];
     }
     if(Math.abs(this.sum)>=10000000)return -1/0;
     if(this.setNum===225){
@@ -284,11 +287,13 @@ ai.nega=function(x,y,depth,alpha,beta){
     var score=-this.nega(x,y,depth,-b,-alpha);
     this.desimulate(x,y,depth%2);
     if(score>alpha){
-        this.cache[this.boardarray+' '+depth]=score;
+        bufstr = bufToString();
+        this.cache[bufstr] = score;
         alpha=score;
     }
     if(alpha>=beta){
-        this.cache[this.boardarray+' '+depth]=beta;
+        bufstr = bufToString();
+        this.cache[bufstr] = beta;
         return alpha;
     }
     b=alpha+1;
