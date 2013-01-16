@@ -124,6 +124,13 @@ function Game(boardElm, boardBackgroundElm){
         black.game = this;
         white.other = black;
         black.other = white;
+        if(!(black instanceof HumanPlayer)){
+            board.setWarning(0, true);
+        }
+
+        if(!(white instanceof HumanPlayer)){
+            board.setWarning(1, true);
+        }
     };
 
     this.start = function(){

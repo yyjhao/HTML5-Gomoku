@@ -161,6 +161,7 @@ var Board = function(boardElm, backgroundElm){
     };
 
     this.winChange = function(r, c, color){
+        boardElm.find(".warning").removeClass("warning");
         var num = colorToNum[color],
             dir;
         for(var i = 0; i < 4; i++){
@@ -218,7 +219,7 @@ var Board = function(boardElm, backgroundElm){
         });
     };
 
-    var warnings = [true, true];
+    var warnings = [false, false];
 
     this.setWarning = function(num, shouldWarn){
         warnings[num] = !!shouldWarn;
