@@ -117,7 +117,7 @@ ai._updateMap=function(r,c,num,remove){
         scores=this.scores,
         i=4,x,y,step,tmp,xx,yy,cur,changes=0,s,e;
     if(!remove){
-        boardBufArr[r * 15 + c] = num << 1;
+        boardBufArr[r * 15 + c] = num + 2;
         this.map[r][c].set=num+1;
         while(i--){
             x=r;
