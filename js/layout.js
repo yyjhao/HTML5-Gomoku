@@ -29,7 +29,7 @@ function adjustSizeGen(){
         }
 
         if(vspace > hspace){
-            hsize = ~~((vspace - 15) / 15 / 2);
+            hsize = Math.min(~~((vspace - 15) / 15 / 2), ~~((avaiw - 22) / 15 / 2));
             gameRegion.css({
                 'padding': hsize+6,
                 'margin-left': -((2*hsize+1)*15+12)/2,
