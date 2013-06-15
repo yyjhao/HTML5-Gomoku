@@ -31,11 +31,10 @@ function Place(r, c, board){
             moved = false;
             return false;
         };
-    }else{
-        elm.onclick = function(){
-            board.clicked(r, c);
-        };
     }
+    elm.onclick = function(){
+        board.clicked(r, c);
+    };
     elm = $(elm);
     this.elm = elm;
     this.isSet = false;
