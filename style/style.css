@@ -346,7 +346,7 @@ table.board {
 	-ms-animation-iteration-count: infinite;
 	-o-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
-	
+
 	-webkit-animation-direction: alternate;
 	-moz-animation-direction: alternate;
 	-ms-animation-direction: alternate;
@@ -433,10 +433,26 @@ table.board {
 	-ms-animation-iteration-count: infinite;
 	-o-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
-	
+
 	-webkit-animation-direction: alternate;
 	-moz-animation-direction: alternate;
 	-ms-animation-direction: alternate;
 	-o-animation-direction: alternate;
 	animation-direction: alternate;
+}
+
+.fb-link {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    font-size: 0.8em;
+    text-shadow: none;
+}
+
+.fb-link :link, .fb-link :visited, .fb-link :link:hover {
+    color: white!important;
+}
+
+.fb-link img {
+    height: 1em;
 }
